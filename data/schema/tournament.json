@@ -16,10 +16,11 @@
       "index": true
     },
     "date": {
-      "type": "string"
+      "type": "integer"
     },
     "players": {
       "type": "array",
+      "default": [],
       "item": {
         "type": "object",
         "properties": {
@@ -49,6 +50,10 @@
     },
     "currentRound": {
       "type": "integer"
+    },
+    "signupsOpen": {
+      "type": "boolean",
+      "default": true
     }
   },
   "required": ["name", "serverId", "uuid"]

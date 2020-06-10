@@ -22,7 +22,24 @@ const create = async () => {
     name: 'tournament',
     schema: tournamentSchema,
     migrationStrategies: {},
-    statics: {},
+    statics: {
+      active: async function (serverId) {
+        const docs = await this.find({
+          serverId,
+          active: true,
+        }).exec();
+        return docs;
+      },
+      addNew: async function (serverId, name, uuid) {
+        this.insert({
+          serverId,
+          name,
+          uuid,
+          date: moment().unix(),
+          active: true,
+        });
+      },
+    },
   });
 
   await database.collection({
