@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "title": "tournament-schema",
+  "version": 0,
+  "type": "object",
+  "properties": {
+    "serverId": {
+      "type": "string",
+      "index": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "uuid": {
+      "type": "string",
+      "index": true
+    },
+    "date": {
+      "type": "string"
+    },
+    "players": {
+      "type": "array",
+      "item": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "games": {
+            "type": "integer",
+            "default": 0
+          },
+          "wins": {
+            "type": "integer",
+            "default": 0
+          }
+        }
+      }
+    },
+    "active": {
+      "type": "boolean",
+      "default": false
+    },
+    "rounds": {
+      "type": "integer"
+    },
+    "currentRound": {
+      "type": "integer"
+    }
+  },
+  "required": ["name", "serverId", "uuid"]
+}

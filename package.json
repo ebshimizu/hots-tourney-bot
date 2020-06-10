@@ -1,0 +1,28 @@
+{
+  "author": {
+    "name": "Falindrith",
+    "email": "falindrith@gmail.com"
+  },
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "version": "1.0.0-alpha",
+  "main": "index.js",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "discord.js": "^12.0.0",
+    "fs-extra": "^8.1.0",
+    "leveldown": "^5.5.1",
+    "lodash": "^4.17.15",
+    "lowdb": "^1.0.0",
+    "moment": "^2.26.0",
+    "moment-timezone": "^0.5.31",
+    "ms": "^2.1.2",
+    "node-fetch": "^2.6.0",
+    "pouchdb-adapter-node-websql": "^7.0.0",
+    "rxdb": "^8.7.5",
+    "rxjs": "^6.5.4",
+    "uuid": "^8.1.0",
+    "validator": "^13.0.0"
+  }
+}
