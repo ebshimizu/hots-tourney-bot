@@ -46,7 +46,17 @@ const create = async () => {
     name: 'match',
     schema: matchSchema,
     migrationStrategies: {},
-    statics: {},
+    statics: {
+      active: async function (serverId, tournamentId, round) {
+        const docs = await this.find({
+          serverId,
+          tournamentId,
+          roundNumber: round
+        }).exec();
+
+        return docs;
+      }
+    },
   });
 
   return database;

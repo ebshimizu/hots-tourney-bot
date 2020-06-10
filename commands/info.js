@@ -20,6 +20,7 @@ module.exports = {
       embed
         .setTitle(`${tournament.name} Information`)
         .addField('Registration', tournament.signupsOpen ? 'Open' : 'Closed')
+        .addField('Current Round', tournament.currentRound)
         .setDescription(
           `Participants: ${tournament.players
             .map((p) => p.displayName)

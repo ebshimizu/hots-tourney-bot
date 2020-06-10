@@ -13,7 +13,7 @@
       "index": true
     },
     "date": {
-      "type": "string"
+      "type": "integer"
     },
     "team1": {
       "type": "array",
@@ -45,11 +45,10 @@
         }
       }
     },
-    "active": {
-      "type": "boolean",
-      "default": false
-    },
     "roundNumber": {
+      "type": "integer"
+    },
+    "matchNumber": {
       "type": "integer"
     },
     "reported": {
