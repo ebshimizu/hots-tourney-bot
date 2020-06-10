@@ -51,6 +51,13 @@
     },
     "roundNumber": {
       "type": "integer"
+    },
+    "reported": {
+      "type": "boolean",
+      "default": false
+    },
+    "winner": {
+      "type": "string"
     }
   },
   "required": ["tournamentId", "serverId", "roundNumber"]
