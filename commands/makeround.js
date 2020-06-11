@@ -17,7 +17,7 @@ async function generateRound(tournament, message, db) {
 
   // chunk it
   const teams = _.chunk(playerNames, 5);
-  const bye = [];
+  let bye = [];
   const matches = [];
 
   // construct random teams as long as there's at least two remaining
@@ -89,6 +89,8 @@ async function generateRound(tournament, message, db) {
       .addField('Players', bye.map((p) => p.displayName).join('\n'))
       .setTimestamp()
       .setFooter(tournament.name);
+    
+    message.channel.send(byeEmbed);
   }
 
   message.channel.stopTyping();
