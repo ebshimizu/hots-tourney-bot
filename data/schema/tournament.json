@@ -30,7 +30,7 @@
           "id": {
             "type": "string"
           },
-          "games": {
+          "matches": {
             "type": "integer",
             "default": 0
           },

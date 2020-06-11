@@ -27,7 +27,7 @@ module.exports = {
         displayName: `DebugPlayer${i}`,
         id: `debug${i}`,
         wins: 0,
-        games: 0,
+        matches: 0,
       });
     }
 
