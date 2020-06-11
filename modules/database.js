@@ -4,6 +4,7 @@ const RxDB = require('rxdb');
 RxDB.plugin(require('pouchdb-adapter-node-websql'));
 const tournamentSchema = require('../data/schema/tournament');
 const matchSchema = require('../data/schema/match');
+const { dbLocation } = require('../config.json');
 
 const Database = {};
 
@@ -13,7 +14,7 @@ function escapeRegExp(text) {
 
 const create = async () => {
   const database = await RxDB.create({
-    name: './db/hots-bot',
+    name: `${dbLocation}/hots-bot`,
     adapter: 'websql',
     multiInstance: true,
   });

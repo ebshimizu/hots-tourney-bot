@@ -7,14 +7,18 @@ module.exports = {
   args: true,
   usage: '[number of players]',
   permissions: ['ADMINISTRATOR'],
-  async execute(message, args, db) {
+  async execute(message, args, db, sotsDB) {
     message.delete();
     message.channel.startTyping();
 
     // debug is a test function and takes no responsibility for your
     // environment
     // create a new tournament
-    await db.tournament.addNew(message.guild.id, 'Debug Tournament', uuidv4());
+    const id = uuidv4();
+    await db.tournament.addNew(message.guild.id, 'Debug Tournament', id);
+
+    // add a collection to the stats of the storm database
+    sotsDB.addCollection(id);
 
     // add a bunch of players
     const playerCount = parseInt(args[0]);

@@ -7,7 +7,7 @@ module.exports = {
   args: true,
   guildOnly: true,
   permissions: ['ADMINISTRATOR'],
-  async execute(message, args, db) {
+  async execute(message, args, db, sotsDB) {
     message.delete();
 
     // check for active tournaments in the server
@@ -21,7 +21,12 @@ module.exports = {
     }
 
     // otherwise, start one up.
-    await db.tournament.addNew(message.guild.id, args.join(' '), uuidv4());
+    const id = uuidv4();
+    await db.tournament.addNew(message.guild.id, args.join(' '), id);
+
+    // add a collection to the stats of the storm database
+    sotsDB.addCollection(id);
+
     message.reply(
       `Started a new tournament named ${args.join(
         ' '

@@ -1,18 +1,26 @@
 // use permissions 268692560
 const fs = require('fs-extra');
 const ms = require('ms');
-const {version} = require('./package.json');
+const { version } = require('./package.json');
+const { prefix, sotsLocation } = require('./config.json');
 
 // database
 const Database = require('./modules/database');
+const SotS = require('./modules/stats-of-the-storm/js/database');
+
+fs.ensureDirSync(`${sotsLocation}/db`);
+const SotsDB = new SotS.HeroesDatabase(`${sotsLocation}/db`);
+SotsDB.load(
+  () => {},
+  () => {}
+);
 
 const Discord = require('discord.js');
-const { prefix } = require('./config.json');
 const client = new Discord.Client();
 
 const commandFiles = fs
   .readdirSync('./commands')
-  .filter(file => file.endsWith('.js'));
+  .filter((file) => file.endsWith('.js'));
 
 function debugLog(message) {
   console.log(`${new Date()}\t[DEBUG] ${message}`);
@@ -38,7 +46,7 @@ async function start() {
     client.user.setActivity(`v${version}`);
   });
 
-  client.on('message', message => {
+  client.on('message', (message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -80,7 +88,7 @@ async function start() {
     }
 
     try {
-      command.execute(message, args, db);
+      command.execute(message, args, db, SotsDB);
     } catch (error) {
       console.error(error);
       message.reply('Error Executing Command');
