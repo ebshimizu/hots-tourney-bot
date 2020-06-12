@@ -15,11 +15,27 @@ module.exports = {
     }
 
     // close
-    await active[0].update({
-      $set: {
-        active: false,
-      },
-    });
-    message.reply(`Ended the "${active[0].name}" tournament.`);
+    message.channel
+      .send(
+        'Are you sure you want to end the current tournament? **This action is not undoable**. [Y/N]'
+      )
+      .then(() => {
+        const filter = (m) => message.author.id === m.author.id;
+        message.channel
+          .awaitMessages(filter, { time: 60000, max: 1, errors: ['time'] })
+          .then(async (messages) => {
+            const choice = messages.first().content.toLowerCase();
+            if (choice === 'y') {
+              await active[0].update({
+                $set: {
+                  active: false,
+                },
+              });
+              message.reply(`Ended the "${active[0].name}" tournament.`);
+            } else {
+              message.reply('End tournament cancelled.');
+            }
+          });
+      });
   },
 };
