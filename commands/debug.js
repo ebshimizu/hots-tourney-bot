@@ -18,30 +18,30 @@ module.exports = {
     await db.tournament.addNew(message.guild.id, 'Debug Tournament', id);
 
     // add a collection to the stats of the storm database
-    sotsDB.addCollection(id);
+    sotsDB.addCollection(id, async () => {
+      // add a bunch of players
+      const playerCount = parseInt(args[0]);
+      const active = await db.tournament.active(message.guild.id);
+      const tournament = active[0];
+      const players = [];
 
-    // add a bunch of players
-    const playerCount = parseInt(args[0]);
-    const active = await db.tournament.active(message.guild.id);
-    const tournament = active[0];
-    const players = [];
+      for (let i = 0; i < playerCount; i++) {
+        players.push({
+          displayName: `DebugPlayer${i}`,
+          id: `debug${i}`,
+          wins: 0,
+          matches: 0,
+        });
+      }
 
-    for (let i = 0; i < playerCount; i++) {
-      players.push({
-        displayName: `DebugPlayer${i}`,
-        id: `debug${i}`,
-        wins: 0,
-        matches: 0,
+      await tournament.update({
+        $set: {
+          players,
+        },
       });
-    }
 
-    await tournament.update({
-      $set: {
-        players,
-      },
+      message.reply(`Constructed a debug tournament with ${playerCount} players`);
+      message.channel.stopTyping();
     });
-
-    message.reply(`Constructed a debug tournament with ${playerCount} players`);
-    message.channel.stopTyping();
   },
 };

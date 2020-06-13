@@ -1,8 +1,11 @@
 // use permissions 268692560
 const fs = require('fs-extra');
 const ms = require('ms');
+const http = require('http');
 const { version } = require('./package.json');
-const { prefix, sotsLocation } = require('./config.json');
+const { prefix, sotsLocation, soothsayerPort } = require('./config.json');
+const Discord = require('discord.js');
+const handleRequest = require('./modules/soothServer');
 
 // database
 const Database = require('./modules/database');
@@ -15,7 +18,6 @@ SotsDB.load(
   () => {}
 );
 
-const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const commandFiles = fs
@@ -94,6 +96,14 @@ async function start() {
       message.reply('Error Executing Command');
     }
   });
+
+  // start the soothsayer server
+  http
+    .createServer(function (req, res) {
+      handleRequest(req, res, db, SotsDB);
+    })
+    .listen(soothsayerPort);
+  console.log(`Soothsayer data server started on port ${soothsayerPort}`);
 
   client.login(process.env.HOTSBOT_TOKEN);
 }

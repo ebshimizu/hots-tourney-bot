@@ -31,6 +31,13 @@ const create = async () => {
         }).exec();
         return docs;
       },
+      allActive: async function () {
+        const docs = await this.find({
+          active: true,
+        }).exec();
+
+        return docs;
+      },
       addNew: async function (serverId, name, uuid) {
         this.insert({
           serverId,
@@ -93,7 +100,7 @@ const create = async () => {
         } else {
           console.log(`Unable to find tournament ${uuid}`);
         }
-      }
+      },
     },
   });
 
