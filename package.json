@@ -24,7 +24,7 @@
     "moment-timezone": "^0.5.31",
     "ms": "^2.1.2",
     "nedb": "^1.8.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "pouchdb-adapter-node-websql": "^7.0.0",
     "rxdb": "^8.7.5",
     "rxjs": "^6.5.4",
