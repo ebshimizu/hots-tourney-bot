@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./index.js"
   },
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-beta",
   "main": "index.js",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
