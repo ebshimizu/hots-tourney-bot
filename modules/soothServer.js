@@ -383,8 +383,9 @@ module.exports = function handleRequest(req, res, db, sotsDB) {
 
         const zipDb = new zip();
         zipDb.addLocalFolder(`${sotsLocation}/db`);
-        resp.write(zipDb.toBuffer());
-        resp.end();
+        res.write(zipDb.toBuffer());
+        res.end();
+        return;
       }
 
       // console.log(resp);
