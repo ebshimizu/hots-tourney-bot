@@ -6,7 +6,7 @@ const summarizeMatchData = require('./stats-of-the-storm/js/database/summarize-m
 const summarizePlayerData = require('./stats-of-the-storm/js/database/summarize-player-data');
 const StatData = require('./stats-of-the-storm/js/game-data/detail-stat-string');
 const { HeroesTalents } = require('./stats-of-the-storm/js/heroes-talents');
-const { sotsLocation } = require('./config.json');
+const { sotsLocation } = require('../config.json');
 
 const heroesTalents = new HeroesTalents(
   path.join(__dirname, '/stats-of-the-storm/assets/heroes-talents'),
