@@ -1,10 +1,12 @@
 const util = require('util');
 const path = require('path');
+const zip = require('adm-zip');
 const summarizeHeroData = require('./stats-of-the-storm/js/database/summarize-hero-data');
 const summarizeMatchData = require('./stats-of-the-storm/js/database/summarize-match-data');
 const summarizePlayerData = require('./stats-of-the-storm/js/database/summarize-player-data');
 const StatData = require('./stats-of-the-storm/js/game-data/detail-stat-string');
 const { HeroesTalents } = require('./stats-of-the-storm/js/heroes-talents');
+const { sotsLocation } = require('./config.json');
 
 const heroesTalents = new HeroesTalents(
   path.join(__dirname, '/stats-of-the-storm/assets/heroes-talents'),
@@ -372,6 +374,17 @@ module.exports = function handleRequest(req, res, db, sotsDB) {
         resp = await pPlayerStats(opts, sotsDB);
       } else if (req.url === '/allPlayerStats') {
         resp = await pAllPlayerStats(opts, sotsDB);
+      }
+      if (req.url === '/get/database') {
+        res.writeHead(200, {
+          'Content-Type': 'application/zip',
+          'Content-Disposition': 'attachment; filename=database.zip',
+        });
+
+        const zipDb = new zip();
+        zipDb.addLocalFolder(`${sotsLocation}/db`);
+        resp.write(zipDb.toBuffer());
+        resp.end();
       }
 
       // console.log(resp);
