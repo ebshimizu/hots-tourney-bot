@@ -35,6 +35,11 @@ module.exports = {
       // get all stats
       const data = await pAllPlayerStats(opts, sotsDB);
 
+      if (data.error) {
+        message.reply(`Error: ${data.error}`);
+        return;
+      }
+
       // sort heroes
       data.heroes.sort((a, b) => {
         if (b.games === a.games) {
