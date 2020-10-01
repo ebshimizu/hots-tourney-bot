@@ -1,8 +1,4 @@
 const {
-  pHeroDraft,
-  pGetCollections,
-  pPlayerStatsForHero,
-  pPlayerStats,
   pAllPlayerStats,
   heroesTalents
 } = require('../modules/dbUtils');
