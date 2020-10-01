@@ -72,8 +72,10 @@ module.exports = {
             .map((h) => {
               return `[${h.wins}-${h.games - h.wins}] ${h.name}`;
             })
-            .join('\n')
+            .join('\n'),
+          true
         )
+        .addField('Hero Pool', data.stats.heroPool)
         .setThumbnail(`http://heroespatchnotes.github.io/heroes-talents/images/heroes/${heroesTalents.heroIcon(topHeroes[0].name)}`)
         .setFooter(tournament.name)
         .setTimestamp();
