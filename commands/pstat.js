@@ -37,7 +37,7 @@ module.exports = {
 
       // sort heroes
       data.heroes.sort((a, b) => {
-        return a.games - b.games;
+        return b.games - a.games;
       });
 
       const topHeroes = data.heroes.slice(0, 5);
