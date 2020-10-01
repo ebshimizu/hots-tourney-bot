@@ -75,7 +75,7 @@ module.exports = {
             .join('\n'),
           true
         )
-        .addField('Hero Pool', data.stats.heroPool)
+        .addField('Hero Pool', data.heroPool, true)
         .setThumbnail(`http://heroespatchnotes.github.io/heroes-talents/images/heroes/${heroesTalents.heroIcon(topHeroes[0].name)}`)
         .setFooter(tournament.name)
         .setTimestamp();
