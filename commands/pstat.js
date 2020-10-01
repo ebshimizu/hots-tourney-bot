@@ -4,6 +4,7 @@ const {
   pPlayerStatsForHero,
   pPlayerStats,
   pAllPlayerStats,
+  heroesTalents
 } = require('../modules/dbUtils');
 const Discord = require('discord.js');
 
@@ -36,8 +37,10 @@ module.exports = {
 
       // sort heroes
       data.heroes.sort((a, b) => {
-        a.games - b.games;
+        return a.games - b.games;
       });
+
+      const topHeroes = data.heroes.slice(0, 5);
 
       // format in an embed
       const embed = new Discord.MessageEmbed()
@@ -50,15 +53,19 @@ module.exports = {
           true
         )
         .addField('KDA', data.stats.KDA.toFixed(2), true)
+        .addField('Kill Participation', `${(data.stats.KillParticipation * 100).toFixed(1)}%`, true)
+        .addField('Time Dead', `${(data.stats.timeDeadPct * 100).toFixed(1)}%`, true)
+        .addField('XP/Minute', data.stats.XPM.toFixed(0), true)
         .addField(
           'Most Played Heroes',
-          data.heroes
-            .slice(0, 3)
+          topHeroes
             .map((h) => {
-              return `${h.name} - ${h.games} games, ${h.wins} wins`;
+              return `[${h.wins}-${h.games - h.wins}] ${h.name}`;
             })
             .join('\n')
         )
+        .setThumbnail(`http://heroespatchnotes.github.io/heroes-talents/images/heroes/${heroesTalents.heroIcon(topHeroes[0].name)}`)
+        .setFooter(tournament.name)
         .setTimestamp();
 
       message.channel.send(embed);

@@ -355,4 +355,5 @@ module.exports = {
   pPlayerStatsForHero,
   pPlayerStats,
   pAllPlayerStats,
+  heroesTalents
 };
