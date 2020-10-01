@@ -37,7 +37,12 @@ module.exports = {
 
       // sort heroes
       data.heroes.sort((a, b) => {
-        return b.games - a.games;
+        if (b.games === a.games) {
+          return b.wins - a.wins;
+        }
+        else {
+          return b.games - a.games;
+        }
       });
 
       const topHeroes = data.heroes.slice(0, 5);
