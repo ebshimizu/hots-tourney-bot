@@ -50,7 +50,7 @@ module.exports = {
 
       // format in an embed
       const embed = new Discord.MessageEmbed()
-        .setColor('blue')
+        .setColor('#3366ff')
         .setTitle(data.name)
         .addField('Games', data.games, true)
         .addField(
