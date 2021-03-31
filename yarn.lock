@@ -362,8 +362,9 @@ babel-runtime@^6.26.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
 
-"bagpipe@github:Ivshti/bagpipe#ae11730ef59364b20868287fb3ce0970a87dc8c8":
+bagpipe@Ivshti/bagpipe#ae11730ef59364b20868287fb3ce0970a87dc8c8:
   version "0.3.7"
+  uid ae11730ef59364b20868287fb3ce0970a87dc8c8
   resolved "https://codeload.github.com/Ivshti/bagpipe/tar.gz/ae11730ef59364b20868287fb3ce0970a87dc8c8"
   dependencies:
     inherits Ivshti/inherits
@@ -3522,18 +3523,19 @@ util@0.12.2:
     is-generator-function "^1.0.7"
     safe-buffer "^5.1.2"
 
+util@Ivshti/node-util:
+  version "0.10.3"
+  uid "97b6beed8e0e478cd4184965ac94bf316f94e5f5"
+  resolved "https://codeload.github.com/Ivshti/node-util/tar.gz/97b6beed8e0e478cd4184965ac94bf316f94e5f5"
+  dependencies:
+    inherits Ivshti/inherits
+
 util@^0.10.3:
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/util/-/util-0.10.4.tgz#3aa0125bfe668a4672de58857d3ace27ecb76901"
   integrity sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==
   dependencies:
     inherits "2.0.3"
-
-"util@github:Ivshti/node-util":
-  version "0.10.3"
-  resolved "https://codeload.github.com/Ivshti/node-util/tar.gz/97b6beed8e0e478cd4184965ac94bf316f94e5f5"
-  dependencies:
-    inherits Ivshti/inherits
 
 utils-merge@1.0.1:
   version "1.0.1"
@@ -3679,9 +3681,9 @@ xtend@~3.0.0:
   integrity sha1-XM50B7r2Qsunvs2laBEcST9ZZlo=
 
 y18n@^3.2.0:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
-  integrity sha1-bRX7qITAhnnA136I53WegR4H+kE=
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.2.tgz#85c901bd6470ce71fc4bb723ad209b70f7f28696"
+  integrity sha512-uGZHXkHnhF0XeeAPgnKfPv1bgKAYyVvmNL1xlKsPYZPaIHxGti2hHqvOCQv71XMsLxu1QjergkqogUnms5D3YQ==
 
 yallist@^3.0.0, yallist@^3.0.3:
   version "3.1.1"
