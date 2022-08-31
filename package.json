@@ -22,7 +22,7 @@
     "medea": "^1.0.3",
     "medeadown": "^1.1.9",
     "moment": "^2.26.0",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "ms": "^2.1.2",
     "nedb": "^1.8.0",
     "node-fetch": "^2.6.0",
